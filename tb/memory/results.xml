@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1776054733" />
+    <testcase name="memory_data_test" classname="test_memory" file="/mnt/c/Users/Jens/Documents/Holy-Core-Pynq/tb/memory/test_memory.py" lineno="6" time="0.0031833648681640625" sim_time_ns="109.0" ratio_time="34240.49850209706" />
+  </testsuite>
+</testsuites>
