@@ -1,7 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1776266252" />
-    <testcase name="random_pos_signext_test" classname="test_signext" file="/mnt/c/Users/Jens/Documents/Holy-Core-Pynq/tb/signext/test_signext.py" lineno="6" time="0.0017559528350830078" sim_time_ns="3.0" ratio_time="1708.474134419552" />
-    <testcase name="random_neg_signext_test" classname="test_signext" file="/mnt/c/Users/Jens/Documents/Holy-Core-Pynq/tb/signext/test_signext.py" lineno="33" time="0.00015020370483398438" sim_time_ns="3.0000000000000004" ratio_time="19972.876190476192" />
-  </testsuite>
-</testsuites>

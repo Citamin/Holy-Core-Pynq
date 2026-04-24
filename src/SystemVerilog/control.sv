@@ -63,7 +63,7 @@ ALU Decoder
 always_comb begin
     case (alu_op)
         2'b00: alu_ctrl = 4'b0000; // load/store
-        2'b01: begin //bracnhes
+        2'b01: begin //branches
             case (funct3)
                 3'b000, 3'b001: alu_ctrl = 4'b0001;  //beq, bne
                 3'b100, 3'b101: alu_ctrl = 4'b0101;  //blt, bge
