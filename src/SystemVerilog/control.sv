@@ -71,7 +71,7 @@ always_comb begin
                 default: alu_ctrl = 4'b1111;
             endcase
         end
-        2'b10: begin //math
+        2'b10: begin //math: R-Type, I-Type
             case (funct3)
                 3'b010: alu_ctrl = 4'b0101;  //slt, slti
                 3'b011: alu_ctrl = 4'b0111;  //sltu, sltiu

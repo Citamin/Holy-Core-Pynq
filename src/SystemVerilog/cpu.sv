@@ -43,6 +43,9 @@ logic [4:0] rs2;
 assign rs2 = instr[24:20];
 logic [11:0] imm;
 assign imm = instr[31:20];
+logic [6:0] funct7;
+assign funct7 = instr[31:25];
+logic [1:0] write_back_src;
 logic [3:0] alu_ctrl;
 logic [2:0] imm_src;
 wire reg_write;
@@ -57,15 +60,18 @@ control ctrl(
     .alu_ctrl(alu_ctrl),
     .imm_src(imm_src),
     .reg_write(reg_write),
-    .mem_write(mem_write)
+    .mem_write(mem_write),
+    .write_back_src(write_back_src)
 );
 logic [31:0] read1;
 logic [31:0] read2;
 logic [31:0] mem_read;
-logic [31:0] write_data;
-
-always_comb begin
-    write_data = mem_read;
+logic [31:0] write_back_data;
+always_comb begin:
+    case (write_back_src)
+    2'b01: write_back_data = mem_read;
+    default write_back_data = alu_result;
+    endcase
 end
 
 regfile regf(
@@ -77,7 +83,7 @@ regfile regf(
     .r_data2(read2),
 
     .w_addr(rd),
-    .w_data(write_data),
+    .w_data(write_back_data),
     .w_en(reg_write)
 );
 
@@ -107,7 +113,7 @@ memory #(
 ) data_mem (
     .clk(clk),
     .rst_n(1'b1),
-    .addr(alu_result),
+    .addr(write_back_data),
     .w_data(read2),
     .w_en(mem_write),
 
